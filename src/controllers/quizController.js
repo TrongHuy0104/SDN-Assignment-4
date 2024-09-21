@@ -2,6 +2,7 @@ const Quiz = require("../models/quizzModel");
 
 exports.getAllQuizzes = async (req, res) => {
     try {
+        console.log("req.params.quizId", req.params);
         const quizzes = await Quiz.find();
         res.status(200).json({
             status: "success",
@@ -26,7 +27,7 @@ exports.getQuiz = async (req, res) => {
                 quiz,
             },
         });
-    } catch {
+    } catch (err) {
         res.status(404).json({
             status: "fail",
             message: err,
@@ -35,10 +36,11 @@ exports.getQuiz = async (req, res) => {
 };
 exports.getQuestionsByKeyword = async (req, res) => {
     try {
+        const keyword = req.query?.keyword || "capital";
         const quiz = await Quiz.findById(req.params.quizId).populate({
             path: "questions",
             match: {
-                text: { $regex: `${req.query?.keyword}`, $options: "i" },
+                text: { $regex: `${keyword}`, $options: "i" },
             },
         });
         res.status(200).json({

@@ -3,8 +3,6 @@ const quizController = require("../controllers/quizController");
 const questionController = require("../controllers/questionController");
 const questionRouter = require("./questionRoutes");
 
-router.use("/:quizId", questionRouter);
-
 router
     .route("/")
     .get(quizController.getAllQuizzes)
@@ -17,4 +15,7 @@ router
     .delete(quizController.deleteQuiz);
 
 router.route("/:quizId/populate").get(quizController.getQuestionsByKeyword);
+
+router.use("/:quizId", questionRouter);
+
 module.exports = router;

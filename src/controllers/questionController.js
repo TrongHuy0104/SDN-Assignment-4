@@ -27,7 +27,7 @@ exports.getQuestion = async (req, res) => {
                 question,
             },
         });
-    } catch {
+    } catch (err) {
         res.status(404).json({
             status: "fail",
             message: err,

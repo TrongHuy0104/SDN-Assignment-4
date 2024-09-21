@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const quizzSchema = new mongoose.Schema({
+const quizSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Title can not be empty!"],
@@ -11,19 +11,10 @@ const quizzSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.ObjectId,
             ref: "Question",
-            // required: [true, "Question must belong to a quiz."],
         },
     ],
 });
 
-
-// quizzSchema.pre(/^find/, function (next) {
-//     this.populate({
-//         path: "questions",
-//         select: "-__v",
-//     });
-//     next();
-// });
-const Quiz = mongoose.model("Quiz", quizzSchema);
+const Quiz = mongoose.model("Quiz", quizSchema);
 
 module.exports = Quiz;
