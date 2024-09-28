@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // ROUTES
-app.use("/quizzes", quizRouter);
-app.use("/question", questionRouter);
+app.use("/api/v1/quizzes", quizRouter);
+app.use("/api/v1/question", questionRouter);
 
 module.exports = app;
