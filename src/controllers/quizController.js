@@ -20,7 +20,9 @@ exports.getAllQuizzes = async (req, res) => {
 
 exports.getQuiz = async (req, res) => {
     try {
-        const quiz = await Quiz.findById(req.params.quizId);
+        const quiz = await Quiz.findById(req.params.quizId).populate({
+            path: "questions",
+        });
         res.status(200).json({
             status: "success",
             data: {
