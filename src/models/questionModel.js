@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const questionModel = new mongoose.Schema({
     text: {
         type: String,
-        unique: true,
         required: [true, "Question content can not be empty!"],
     },
     options: [
