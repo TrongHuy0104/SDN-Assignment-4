@@ -14,13 +14,13 @@ const questionModel = new mongoose.Schema({
     keywords: [String],
     correctAnswerIndex: {
         type: Number,
-        validate: {
-            validator: function (val) {
-                return val < this.options.length && val >= 0;
-            },
-            message:
-                "Correct answer index can not be larger than options length",
-        },
+        // validate: {
+        //     validator: function (val) {
+        //         return val > this.options.length;
+        //     },
+        //     message:
+        //         "Correct answer index can not be larger than options length",
+        // },
     },
 });
 
