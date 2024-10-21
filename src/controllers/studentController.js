@@ -69,6 +69,8 @@ exports.createStudent = async (req, res) => {
             },
         });
     } catch (err) {
+        console.log("err", err);
+
         let statusCode;
         let message;
         if (err.code === 11000) {
