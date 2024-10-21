@@ -3,8 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 // ROUTER
-const quizRouter = require("./src/routes/quizRoutes");
-const questionRouter = require("./src/routes/questionRoutes");
+const studentRouter = require("./src/routes/studentRoutes");
 
 const app = express();
 
@@ -24,7 +23,15 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // ROUTES
-app.use("/api/v1/quizzes", quizRouter);
-app.use("/api/v1/question", questionRouter);
+app.use("/info", (_, res, next) => {
+    res.status(200).json({
+        data: {
+            fullName: "Nguyen Van A",
+            studentCode: "QNUO1234",
+        },
+    });
+    next();
+});
+app.use("/students", studentRouter);
 
 module.exports = app;
