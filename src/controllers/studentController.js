@@ -91,7 +91,7 @@ exports.updateStudent = async (req, res) => {
     try {
         const student = await Student.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            { ...req.body, fullName: req.body.name },
             {
                 new: true,
                 runValidators: true,
