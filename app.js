@@ -3,7 +3,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 // ROUTER
-const studentRouter = require("./src/routes/studentRoutes");
+const authRouter = require("./src/routes/authRoutes");
+const userRouter = require("./src/routes/userRoutes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/info", (_, res, next) => {
     });
     next();
 });
-app.use("/students", studentRouter);
+app.use("/auth", authRouter);
+app.use("/users", userRouter);
 
 module.exports = app;
