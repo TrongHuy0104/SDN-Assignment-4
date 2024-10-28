@@ -27,8 +27,8 @@ app.use(express.json());
 app.use("/info", (_, res, next) => {
     res.status(200).json({
         data: {
-            fullName: "Nguyen Van A",
-            studentCode: "QNUO1234",
+            fullName: "Dinh Trong Huy",
+            studentCode: "QE170135",
         },
     });
     next();
